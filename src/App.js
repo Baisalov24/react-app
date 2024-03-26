@@ -1,12 +1,15 @@
-import Counter from "./components/Counter";
+import React from "react";
+import { useState } from "react";
+
 
 function App() {
-  
+  const [post, setPost] = useState({title: '', body: ''});
   return (
     <div>
-      <Counter/>
-    </div>
-  );
-}
+    <input onChange={(e) => setPost({title: e.target.value})} type="text" placeholder="type title"  value={post.title}/>
+    <input onChange={(e) => setPost({body: e.target.value })} type="text" placeholder="type text" value={post.body} />
+  </div>
+  )
+  }
 
 export default App;
