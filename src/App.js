@@ -11,9 +11,16 @@ function App() {
   return (
     <div>
       {data.map((postData) => (
-        <div key={postData.id}>
-          <h3>{postData.title}</h3>
-          <p>{postData.body}</p>
+        <div className="post" key={postData.id}>
+          <div className="post__content">
+            <strong>
+              {postData.id}. {postData.title}
+            </strong>
+            <div>{postData.body}</div>
+          </div>
+          <div className="post__btns">
+           <button>X</button>
+          </div>
         </div>
       ))}
     </div>
