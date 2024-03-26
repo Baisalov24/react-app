@@ -1,15 +1,12 @@
 import React from "react";
-import { useState } from "react";
-
+import PostForm from "./components/PostForm";
 
 function App() {
-  const [post, setPost] = useState({title: '', body: ''});
   return (
-    <div>
-    <input onChange={(e) => setPost({title: e.target.value})} type="text" placeholder="type title"  value={post.title}/>
-    <input onChange={(e) => setPost({body: e.target.value })} type="text" placeholder="type text" value={post.body} />
-  </div>
+      <div>
+        <PostForm/>
+      </div>
   )
-  }
+}
 
 export default App;
