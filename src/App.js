@@ -11,7 +11,7 @@ function App() {
   return (
     <div>
       {data.map((postData) => (
-        <div>
+        <div key={postData.id}>
           <h3>{postData.title}</h3>
           <p>{postData.body}</p>
         </div>
