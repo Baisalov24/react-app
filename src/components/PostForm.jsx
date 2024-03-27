@@ -3,7 +3,7 @@ import { useState } from "react";
 import MyButton from "./UI/button/MyButton";
 import MyInput from "./UI/input/MyInput";
 
-const PostForm = ({data, setData}) => {
+const PostForm = ({create}) => {
   const [post, setPost] = useState({ title: "", body: "" });
 
   function addNewPost(event) {
@@ -12,7 +12,7 @@ const PostForm = ({data, setData}) => {
       ...post,
       id: Date.now(),
     };
-    setData([...data, newPost]);
+    create(newPost)
     setPost({ title: "", body: "" })
   }
 

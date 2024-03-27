@@ -4,18 +4,26 @@ import PostList from "./components/PostList";
 import PostForm from "./components/PostForm";
 
 function App() {
-  const [data, setData] = useState([]);
+  const [posts, setPosts] = useState([]);
 
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/posts?_limit=5")
       .then((res) => res.json())
-      .then((info) => setData(info));
+      .then((info) => setPosts(info));
   }, []);
+
+  const createPost = (newPost) => {
+    setPosts([...posts, newPost]);
+  };
+
+  function removePost(post) {
+    setPosts(posts.filter((p) => p.id !== post.id));
+  }
 
   return (
     <div>
-      <PostForm data={data} setData={setData}/>
-      <PostList data={data} setData={setData} title={"List of Posts"}/>
+      <PostForm create={createPost} />
+      <PostList posts={posts} title={"List of Posts"} remove={removePost} />
     </div>
   );
 }

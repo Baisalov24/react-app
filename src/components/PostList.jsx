@@ -1,15 +1,20 @@
 import React from "react";
 import PostItem from "./PostItem";
 
-const PostList = ({ data, setData, title  }) => {
-  if (!data.length) {
+const PostList = ({ posts, title, remove }) => {
+  if (!posts.length) {
     return <h1 style={{ textAlign: "center" }}>No posts found!</h1>;
   }
   return (
     <div>
       <h1 style={{ textAlign: "center" }}>{title}</h1>
-      {data.map((post) => (
-        <PostItem post={post} key={post.id} data={data} setData={setData} />
+      {posts.map((post, index) => (
+        <PostItem
+          post={post}
+          remove={remove}
+          number={index + 1}
+          key={post.id}
+        />
       ))}
     </div>
   );
