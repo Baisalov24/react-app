@@ -2,10 +2,12 @@ import React from "react";
 import PostItem from "./PostItem";
 
 const PostList = ({ posts, title, remove }) => {
-  if (!posts.length) {
-    return <h1 style={{ textAlign: "center" }}>No posts found!</h1>;
+  if(!posts.length) {
+    return (
+      <h1 style={{ textAlign: "center" }}>Posts are not found!</h1>
+    )
   }
-  return (
+  return ( 
     <div>
       <h1 style={{ textAlign: "center" }}>{title}</h1>
       {posts.map((post, index) => (
