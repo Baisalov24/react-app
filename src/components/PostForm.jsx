@@ -21,6 +21,7 @@ const PostForm = () => {
       id: Date.now(),
     };
     setData([...data, newPost]);
+    setPost({ title: "", body: "" })
   }
 
   return (

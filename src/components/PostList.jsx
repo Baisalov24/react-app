@@ -1,4 +1,3 @@
-import { func } from "prop-types";
 import React from "react";
 
 const PostList = ({ data, setData }) => {
@@ -6,6 +5,13 @@ const PostList = ({ data, setData }) => {
        setData(data.filter(item => item.id !== id))
     }
 
+    if(!data.length) {
+        return( 
+            <h1 style={{textAlign: 'center'}}>
+               No posts found!
+            </h1>
+        )
+    }
   return (
     <div>
       {data.map((postData) => (
