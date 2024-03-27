@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import PostList from "./PostList";
+import MyButton from "./UI/button/MyButton";
 
 const PostForm = () => {
   const [data, setData] = useState([]);
@@ -38,7 +39,7 @@ const PostForm = () => {
         placeholder="type text"
         value={post.body}
       />
-      <button onClick={addNewPost}>Add post</button>
+      <MyButton onClick={addNewPost}>Add post</MyButton>
 
       <PostList data={data} setData={setData} />
     </div>

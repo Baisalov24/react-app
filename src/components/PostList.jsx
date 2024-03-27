@@ -1,4 +1,5 @@
 import React from "react";
+import MyButton from "./UI/button/MyButton";
 
 const PostList = ({ data, setData }) => {
     function removePost (id) {
@@ -23,7 +24,7 @@ const PostList = ({ data, setData }) => {
             <div>{postData.body}</div>
           </div>
           <div className="post__btns">
-            <button onClick={() => removePost(postData.id)}>X</button>
+            <MyButton onClick={() => removePost(postData.id)}>Delete</MyButton>
           </div>
         </div>
       ))}
