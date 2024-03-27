@@ -1,13 +1,6 @@
 import React from "react";
-import { useState } from "react";
 
-const PostList = () => {
-  const [data, setData] = useState([]);
-
-  fetch("https://jsonplaceholder.typicode.com/posts?_limit=5")
-    .then((res) => res.json())
-    .then((info) => setData(info));
-
+const PostList = ({ data }) => {
   return (
     <div>
       {data.map((postData) => (
