@@ -1,6 +1,11 @@
+import { func } from "prop-types";
 import React from "react";
 
-const PostList = ({ data }) => {
+const PostList = ({ data, setData }) => {
+    function removePost (id) {
+       setData(data.filter(item => item.id !== id))
+    }
+
   return (
     <div>
       {data.map((postData) => (
@@ -12,7 +17,7 @@ const PostList = ({ data }) => {
             <div>{postData.body}</div>
           </div>
           <div className="post__btns">
-            <button>X</button>
+            <button onClick={() => removePost(postData.id)}>X</button>
           </div>
         </div>
       ))}

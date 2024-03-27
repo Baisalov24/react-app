@@ -39,7 +39,7 @@ const PostForm = () => {
       />
       <button onClick={addNewPost}>Add post</button>
 
-      <PostList data={data} />
+      <PostList data={data} setData={setData} />
     </div>
   );
 };
