@@ -11,4 +11,4 @@ export const privateRoutes = [
   { path: "/error", component: <Error/>, exact: true },
 ];
 
-export const publicRoutes = [{ path: "/login", component: Login, exact: true }];
+export const publicRoutes = [{ path: "/login", component: <Login/>, exact: true }];
