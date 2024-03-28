@@ -2,7 +2,6 @@ import React, { useMemo } from "react";
 import { useState, useEffect } from "react";
 import PostList from "./components/PostList";
 import PostForm from "./components/PostForm";
-import MySelect from "./components/UI/select/MySelect";
 import PostFilter from "./components/PostFilter";
 import MyModal from "./components/UI/MyModal/MyModal";
 import MyButton from "./components/UI/button/MyButton";
@@ -12,10 +11,13 @@ function App() {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/posts?_limit=5")
-      .then((res) => res.json())
-      .then((info) => setPosts(info));
+    fetchPosts();
   }, []);
+
+  async function fetchPosts() {
+    const posts = await PostService.getAll();
+    setPosts(posts);
+  }
 
   const [filter, setFilter] = useState({ sort: "", query: "" });
   const [modal, setModal] = useState(false);
