@@ -20,18 +20,16 @@ function App() {
   const [page, setPage] = useState(1);
   const sortedAndSeacrchedPosts = usePosts(posts, filter.sort, filter.query);
 
-  const [fetchPosts, isPostsLoading, postError] = useFetching(
-    async (limit, page) => {
-      const response = await PostService.getAll(limit, page);
-      setPosts([...posts, ...response.data]);
-      const totalCount = response.headers["x-total-count"];
-      setTotalPages(getPageCount(totalCount, limit));
-    }
-  );
+  const [fetchPosts, isPostsLoading, postError] = useFetching(async () => {
+    const response = await PostService.getAll(limit, page);
+    setPosts(response.data);
+    const totalCount = response.headers["x-total-count"];
+    setTotalPages(getPageCount(totalCount, limit));
+  });
 
   useEffect(() => {
     fetchPosts(limit, page);
-  }, []);
+  }, [page]);
 
   const createPost = (newPost) => {
     setPosts([...posts, newPost]);
@@ -55,9 +53,7 @@ function App() {
       </MyModal>
       <hr style={{ margin: "15px 0" }} />
       <PostFilter filter={filter} setFilter={setFilter} />
-      {postError &&
-            <h1>Произошла ошибка ${postError}</h1>
-            }
+      {postError && <h1>Произошла ошибка ${postError}</h1>}
       <PostList
         posts={sortedAndSeacrchedPosts}
         title={"List of Posts"}
