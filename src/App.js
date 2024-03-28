@@ -45,8 +45,8 @@ function App() {
 
   return (
     <div className="App">
-      <MyButton onClick = {() => setModal(true)}>
-        Click
+      <MyButton style={{marginTop: '30px'}} onClick = {() => setModal(true)}>
+        Create post
       </MyButton>
       <MyModal visible={modal} setVisible={setModal}>
         <PostForm create={createPost} />{" "}
